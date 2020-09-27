@@ -37,14 +37,14 @@
 		document.getElementById('btn').onclick = () => {
 			ch.color = `cl_crosshaircolor_b "${genNum(10, 250)}"; cl_crosshaircolor_r "${genNum(10, 250)}"; cl_crosshaircolor_g "${genNum(10, 250)}";`
 
-			ch.dot = `cl_crosshairdot "${genNum(0,2)}";`
-			ch.tshape = `cl_crosshair_t "${genNum(0,2)}";`
+			ch.dot = `cl_crosshairdot "${genNum(0,1)}";`
+			ch.tshape = `cl_crosshair_t "${genNum(0,1)}";`
 			ch.drawoutline = `cl_crosshair_drawoutline "${genNum(0,1)}";`
 			
-			ch.gap = `cl_crosshairgap "${genDesNum(-2,4)}";`
+			ch.gap = `cl_crosshairgap "${genDesNum(-2,2)}";`
 			ch.size = `cl_crosshairsize "${genNum(1, 6)}";`
 			ch.style = `cl_crosshairstyle "${genNum(3, 5)}";`
-			ch.thickness = `cl_crosshairthickness "${genDesNum(0,2)}";`
+			ch.thickness = `cl_crosshairthickness "${genDesNum(0,1.5)}";`
 			ch.outlinethickness = `cl_crosshair_outlinethickness  "${genDesNum(0,2)}";`
 
 			let str = ``;
