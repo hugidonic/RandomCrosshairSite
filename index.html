@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.btn {
+			padding: 15px;
+			font-size: 30px;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn" class="btn">Click</button>
+	<script>
+		const genNum = (from, to) => {
+			return Math.floor(from + Math.random() * (to + 1 - from));
+
+		} 
+		const genDesNum = (from, to) => {
+			return (from + Math.random() * (to + 1 - from)).toFixed(2)
+		}
+		
+			let ch = {
+				color: '',
+				dot: '',
+				tshape: '',
+				gap: '',
+				size: '',
+				style: '',
+				thickness: '',
+				drawoutline: '',
+				outlinethickness: '',
+			}
+		document.getElementById('btn').onclick = () => {
+			ch.color = `cl_crosshaircolor_b "${genNum(10, 250)}"; cl_crosshaircolor_r "${genNum(10, 250)}"; cl_crosshaircolor_g "${genNum(10, 250)}";`
+
+			ch.dot = `cl_crosshairdot "${genNum(0,2)}";`
+			ch.tshape = `cl_crosshair_t "${genNum(0,2)}";`
+			ch.drawoutline = `cl_crosshair_drawoutline "${genNum(0,1)}";`
+			
+			ch.gap = `cl_crosshairgap "${genDesNum(-2,4)}";`
+			ch.size = `cl_crosshairsize "${genNum(1, 6)}";`
+			ch.style = `cl_crosshairstyle "${genNum(3, 5)}";`
+			ch.thickness = `cl_crosshairthickness "${genDesNum(0,2)}";`
+			ch.outlinethickness = `cl_crosshair_outlinethickness  "${genDesNum(0,2)}";`
+
+			let str = ``;
+
+			for (const opt in ch) {
+				str = str + `${ch[opt]}`
+			}
+			navigator.clipboard.writeText(str)
+		}
+	</script>
+</body>
+</html>
