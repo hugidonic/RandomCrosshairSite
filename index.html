@@ -23,6 +23,8 @@
 </head>
 <body>
 	<button id="btn" class="btn">Click</button>
+	<input type="text" hidden id='myInput' >
+
 	<script>
 		const genNum = (from, to) => {
 			return Math.floor(from + Math.random() * (to + 1 - from));
@@ -31,18 +33,26 @@
 		const genDesNum = (from, to) => {
 			return (from + Math.random() * (to + 1 - from)).toFixed(2)
 		}
+
+		function copy(str) {
+			var copyText = document.getElementById("myInput");
+			copyText.value = str
+			copyText.select();
+			copyText.setSelectionRange(0, 99999)
+			document.execCommand("copy");
+		}
 		
-			let ch = {
-				color: '',
-				dot: '',
-				tshape: '',
-				gap: '',
-				size: '',
-				style: '',
-				thickness: '',
-				drawoutline: '',
-				outlinethickness: '',
-			}
+		let ch = {
+			color: '',
+			dot: '',
+			tshape: '',
+			gap: '',
+			size: '',
+			style: '',
+			thickness: '',
+			drawoutline: '',
+			outlinethickness: '',
+		}
 		document.getElementById('btn').onclick = () => {
 			ch.color = `cl_crosshaircolor_b "${genNum(10, 250)}"; cl_crosshaircolor_r "${genNum(10, 250)}"; cl_crosshaircolor_g "${genNum(10, 250)}";`
 
@@ -61,7 +71,13 @@
 			for (const opt in ch) {
 				str = str + `${ch[opt]}`
 			}
-			navigator.clipboard.writeText(str)
+
+			if (navigator.clipboard) {
+				navigator.clipboard.writeText(str)
+				return
+			} else {
+				copy(str)
+			}
 		}
 	</script>
 </body>
